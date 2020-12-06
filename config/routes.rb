@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :products
   resources :shops, only: %i[index show]
   resources :order_items
