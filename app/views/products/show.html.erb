@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @product.title %>
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+    <p>
+      <strong>Price:</strong>
+      <%= @product.price %>
+    </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+    <%= link_to 'Back', products_path %>
+  <% else %>
+    <% controller.redirect_to new_user_session_path %>
+  <% end %>
+<% else %>
+  <% controller.redirect_to new_user_session_path %>
+<% end %>
+

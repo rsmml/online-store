@@ -1,6 +1,14 @@
-<h1>Editing Product</h1>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <h1>Editing Product</h1>
 
-<%= render 'form', product: @product %>
+    <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+    <%= link_to 'Show', @product %> |
+    <%= link_to 'Back', products_path %>
+  <% else %>
+    <% controller.redirect_to new_user_session_path %>
+  <% end %>
+<% else %>
+  <% controller.redirect_to new_user_session_path %>
+<% end %>
