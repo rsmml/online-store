@@ -8,13 +8,7 @@
     <% end %>
     <!-- Logo -->
 
-    <!-- <div class="d-flex flex-column flex-grow-1">
-      <span class="navbar-text">From Harmbug</span>
-      <span class="navbar-text">With Love</span>
-    </div> -->
-
     <ul class="navbar-nav ml-auto pt-2">
-
       <!-- Shop Now button -->
       <li class="nav-item">
         <%= link_to shops_path do %>
@@ -26,6 +20,7 @@
       </li>
       <!-- Shop Now button -->
 
+      <!-- Log Out User/Admin -->
       <% if user_signed_in? %>
         <% if current_user.admin? %>
           <li class="nav-item">
@@ -49,6 +44,7 @@
           <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
         </li>
       <% end %>
+      <!-- Log Out User/Admin -->
 
       <!-- Shopping Cart -->
       <li class="nav-item">
