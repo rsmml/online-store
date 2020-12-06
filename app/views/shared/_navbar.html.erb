@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+
+  <div class="collapse navbar-collapse justify-content-between px-5" id="collapse_target">
+    <%= link_to root_path do %>
+       <%= image_tag "logo.png", class: "", :style => "height: 60px;" %>
+    <% end %>
+
+    <!-- <div class="d-flex flex-column flex-grow-1">
+      <span class="navbar-text">From Harmbug</span>
+      <span class="navbar-text">With Love</span>
+    </div> -->
+
+    <ul class="navbar-nav pt-2">
+      <li class="nav-item">
+        <%= link_to "All Products", shops_path, class: 'nav-link'   %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: 'nav-link'  %>
+        </li>
+        <% if current_user.admin? %>
+          <li class="nav-item">
+            <p class="nav-link">Welcome <%= current_user.user_name %></p>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Add Products", new_product_path, class: 'btn btn-light'  %>
+          </li>
+        <% end %>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Log In", user_session_path, class: 'nav-link'  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <%= link_to carts_path, :class=> "nav-link" do %>
+            <i class="fas fa-shopping-cart"></i>
+        <% end %>
+      </li>
+      <li id="cart">
+        <%= render 'carts/cart' %>
+      </li>
+    </ul>
+  </div>
+
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+
+
+

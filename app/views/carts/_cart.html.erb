@@ -1,1 +1,3 @@
-<%= link_to "#{current_order.order_items.size} items with a value of #{current_order.subtotal }$", carts_path%>
+<div class="nav-link">
+  <%= current_order.order_items.size%>
+</div>
