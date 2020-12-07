@@ -1,12 +1,21 @@
 <div class="align-items-end row">
-  <div class="col-lg-3 col-12 justify-content-center">
+  <!-- Picture -->
+  <div class="col-lg-3 col-12 d-flex justify-content-center">
     <%= image_tag "featured.png", alt: "alttext", class: "featured-picture"%>
   </div>
+
+  <!-- Banner -->
   <div class="col-lg-9 col-12">
-    <div class="featured-title d-flex align-items-center">
-      <i class="fas fa-burn"></i>
-      <p>Featured</p>
+
+    <!-- Title -->
+    <div class="row featured-title d-flex justify-content-center align-items-center">
+      <div class="d-flex align-items-center col-12 col-lg-12" style="padding-left: 0px;">
+        <i class="fas fa-burn"></i>
+        <p>Featured</p>
+      </div>
     </div>
+
+    <!-- Cards -->
     <div class="featured-bar d-flex">
       <%= render "shared/featured-list" %>
     </div>

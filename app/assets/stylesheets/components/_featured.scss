@@ -36,6 +36,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  .text-card {
+    flex-grow: 1;
+  }
 }
 
 .v3 {
