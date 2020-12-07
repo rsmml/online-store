@@ -1,37 +1,43 @@
-<h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
-<p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', shop_path(product) %></td>
-
-        <td>
-          <%= simple_form_for @order_item, remote: true do |f| %>
-            <%= f.hidden_field :product_id, :value => product.id %>
-            <%= f.number_field :quantity, :value => 1, :min => 1 %>
-            <%= f.submit 'Add to cart', :class => 'btn btn-primary' %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
+<div>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- Hamburger Menu -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Links -->
+      <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">All</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hands</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Face</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Full Body</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="main-container-grid">
+    <div class="cards">
+      <% @products.each do |product| %>
+        <% if product.photos.attached? %>
+          <div class="card">
+            <%= cl_image_tag product.photos.first.key, height: 200, width: 300, crop: :fill %>
+          </div>
+        <% else %>
+          <div class="card">
+            <%= image_tag "featured-1.png", alt: "alttext" %>
+            <%= product.ammount %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
