@@ -1,0 +1,28 @@
+.outline-search-cart{
+  border-radius: 100px;
+  border: 1px solid rgba(0,0,0,0.3);
+  width: max-content;
+  height: 40px;
+  input{
+    background-color: transparent;
+    border: none;
+  }
+  input:focus {
+      outline:none !important;
+  }
+  .vl{
+    border-left: 1px solid rgba(0,0,0,0.4);
+    height: 20px;
+  }
+  a.cart {
+    text-decoration: none;
+  }
+  .badge-position{
+    position: relative;
+    top: -10px;
+    right: -10px;
+  }
+  .rounded-circle{
+    padding: 8px 10px;
+  }
+}

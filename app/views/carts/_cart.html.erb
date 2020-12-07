@@ -1,5 +1,9 @@
-<span>
-  <h6 class="badge badge-pill badge-danger">
-    <%= current_order.order_items.size%>
-  </h6>
+<span id="cart">
+  <% if current_order.order_items.size > 0 %>
+    <h6 class="badge-position badge badge-pill badge-danger rounded-circle">
+      <%= current_order.order_items.size%>
+    </h6>
+  <% end %>
 </span>
+
+

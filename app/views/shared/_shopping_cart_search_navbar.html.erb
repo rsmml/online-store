@@ -1,0 +1,18 @@
+<div class="outline-search-cart">
+  <div class="d-flex justify-content-between align-items-center">
+    <!-- Search Bar -->
+    <i class="fas fa-search px-2"></i>
+    <input type="text" placeholder="Search">
+    <div class="vl"></div>
+
+    <!-- Shopping Cart -->
+    <div>
+      <%= link_to carts_path, :class=> "nav-link navbar-link-2 waves-effect cart" do %>
+        <i class="fas fa-shopping-cart" style="color: gray"></i>
+      <% end %>
+    </div>
+
+    <!-- Badge -->
+      <%= render 'carts/cart' %>
+  </div>
+</div>
