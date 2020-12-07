@@ -1,0 +1,60 @@
+<% @products.each do |product| %>
+  <% if product.photos.attached? %>
+    <div class="card">
+      <!-- Image -->
+      <%= cl_image_tag product.photos.first.key, height: 200, width: 300, crop: :fill %>
+      <!-- Stock -->
+      <% if product.stock.nil? %>
+        <p class="out-stock">Out of stock</p>
+      <% elsif product.stock <= 10 && product.stock > 0  %>
+        <p class="last-stock">Last <%= product.stock %> </p>
+      <% end %>
+      <!-- Title -->
+      <p class="cart-title"><%= product.title %></p>
+      <!-- Price / Add to cart -->
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="cart-price">EUR <%= product.price %></p>
+        <%= simple_form_for @order_item, remote: true do |f| %>
+          <%= f.hidden_field :product_id, :value => product.id %>
+          <%= f.hidden_field :quantity, :value => 1, :min => 1 %>
+          <% if product.stock.nil?  %>
+            <%= f.submit '+', :class => 'add-to-cart-disable', disabled: true %>
+          <% else %>
+            <%= f.submit '+', :class => 'add-to-cart' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="card">
+      <!-- Image -->
+      <%= image_tag "featured-1.png", alt: "alttext" %>
+      <!-- Stock -->
+      <% if product.stock.nil? %>
+        <p class="out-stock">Out of stock</p>
+      <% elsif product.stock <= 10 && product.stock > 0  %>
+        <p class="last-stock">Last <%= product.stock %> </p>
+      <% end %>
+      <!-- Title -->
+      <p class="cart-title"><%= product.title %></p>
+      <!-- Price / Add to cart -->
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="cart-price">EUR <%= product.price %></p>
+        <%= simple_form_for @order_item, remote: true do |f| %>
+          <%= f.hidden_field :product_id, :value => product.id %>
+          <%= f.hidden_field :quantity, :value => 1, :min => 1 %>
+          <% if product.stock.nil?  %>
+            <%= f.submit '+', :class => 'add-to-cart-disable', disabled: true %>
+          <% else %>
+            <%= f.submit '+', :class => 'add-to-cart' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+<!-- Disable BTN For for -->
+<!--  disabled: true  -->

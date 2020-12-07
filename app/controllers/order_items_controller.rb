@@ -6,8 +6,6 @@ class OrderItemsController < ApplicationController
     session[:order_id] = @order.id
   end
 
-
-
   def update
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
@@ -21,10 +19,6 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
     @order_items = current_order.order_items
   end
-
-
-
-
 
   private
 
