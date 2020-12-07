@@ -1,6 +1,6 @@
 <% @products.each do |product| %>
   <% if product.photos.attached? %>
-    <div class="card">
+    <div class="card d-flex justify-content-between flex-column">
       <!-- Image -->
       <%= cl_image_tag product.photos.first.key, height: 200, width: 300, crop: :fill %>
       <!-- Stock -->
@@ -26,7 +26,7 @@
       </div>
     </div>
   <% else %>
-    <div class="card">
+    <div class="card d-flex justify-content-between flex-column">
       <!-- Image -->
       <%= image_tag "featured-1.png", alt: "alttext" %>
       <!-- Stock -->
