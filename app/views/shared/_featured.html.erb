@@ -1,0 +1,15 @@
+<div class="align-items-end row">
+  <div class="col-lg-3 col-12 justify-content-center">
+    <%= image_tag "featured.png", alt: "alttext", class: "featured-picture"%>
+  </div>
+  <div class="col-lg-9 col-12">
+    <div class="featured-title d-flex align-items-center">
+      <i class="fas fa-burn"></i>
+      <p>Featured</p>
+    </div>
+    <div class="featured-bar d-flex">
+      <%= render "shared/featured-list" %>
+    </div>
+  </div>
+</div>
+
