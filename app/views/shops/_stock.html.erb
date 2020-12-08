@@ -1,24 +1,33 @@
-<% @products.each do |product| %>
+<% @products.order(:created_at).each do |product| %>
   <% if product.photos.attached? %>
-    <div class="card d-flex justify-content-between flex-column">
+  <!-- Card with CL Picture -->
+    <div class="card d-flex justify-content-between flex-column" data-controller="stock">
+      <span style="display: none;" data-target="stock.id"><%= product.id %></span>
       <!-- Image -->
       <%= cl_image_tag product.photos.first.key, height: 200, width: 300, crop: :fill %>
+
       <!-- Stock -->
-      <% if product.stock.nil? %>
-        <p class="out-stock">Out of stock</p>
-      <% elsif product.stock <= 10 && product.stock > 0  %>
-        <p class="last-stock">Last <%= product.stock %> </p>
-      <% end %>
+      <span>
+        <% if product.stock.nil? || product.stock == 0 %>
+          <p class="out-stock">Out of stock</p>
+        <% elsif product.stock <= 10 && product.stock > 0  %>
+          <p class="last-stock" data-stock-target="count">Last <%= product.stock %> </p>
+        <% end %>
+      </span>
+
       <!-- Title -->
       <p class="cart-title"><%= product.title %></p>
-      <!-- Price / Add to cart -->
+
+      <!-- Price -->
       <div class="d-flex justify-content-between align-items-center">
         <p class="cart-price">EUR <%= product.price %></p>
-        <%= simple_form_for [@product, @order_item], remote: true do |f| %>
+
+        <!-- Add to Cart -->
+        <%= simple_form_for [@product, @order_item], :html => {:"data-action" => 'click->stock#refresh'}, remote: true do |f| %>
           <%= f.hidden_field :product_id, :value => product.id %>
           <%= f.hidden_field :quantity, :value => 1, :min => 1 %>
           <%= f.hidden_field :stock, :value => 1, :min => 1 %>
-          <% if product.stock.nil?%>
+          <% if product.stock.nil? || product.stock == 0 %>
             <%= f.submit '+', :class => 'add-to-cart-disable', disabled: true %>
           <% else %>
             <%= f.submit '+', :class => 'add-to-cart' %>
@@ -27,25 +36,43 @@
       </div>
     </div>
   <% else %>
-    <div class="card d-flex justify-content-between flex-column">
+
+
+
+
+
+
+
+
+
+  <!-- Card with-out CL Picture -->
+    <div class="card d-flex justify-content-between flex-column" data-controller="stock">
+      <span data-target="stock.id"><% product %></span>
       <!-- Image -->
       <%= image_tag "featured-1.png", alt: "alttext" %>
+
       <!-- Stock -->
-      <% if product.stock.nil? %>
-        <p class="out-stock">Out of stock</p>
-      <% elsif product.stock <= 10 && product.stock > 0  %>
-        <p class="last-stock">Last <%= product.stock %> </p>
-      <% end %>
+      <span>
+        <% if product.stock.nil? || product.stock == 0 %>
+          <p class="out-stock">Out of stock</p>
+        <% elsif product.stock <= 10 && product.stock > 0  %>
+          <p class="last-stock" data-stock-target="count">Last <%= product.stock %> </p>
+        <% end %>
+      </span>
+
       <!-- Title -->
       <p class="cart-title"><%= product.title %></p>
-      <!-- Price / Add to cart -->
+
+      <!-- Price -->
       <div class="d-flex justify-content-between align-items-center">
         <p class="cart-price">EUR <%= product.price %></p>
-        <%= simple_form_for [@product, @order_item], remote: true do |f| %>
+
+        <!-- Add to Cart -->
+        <%= simple_form_for [@product, @order_item], :html => {:"data-action" => 'click->stock#refresh'}, remote: true do |f| %>
           <%= f.hidden_field :product_id, :value => product.id %>
           <%= f.hidden_field :quantity, :value => 1, :min => 1 %>
           <%= f.hidden_field :stock, :value => 1, :min => 1 %>
-          <% if product.stock.nil?%>
+          <% if product.stock.nil? || product.stock == 0 %>
             <%= f.submit '+', :class => 'add-to-cart-disable', disabled: true %>
           <% else %>
             <%= f.submit '+', :class => 'add-to-cart' %>
@@ -55,8 +82,3 @@
     </div>
   <% end %>
 <% end %>
-
-
-
-<!-- Disable BTN For for -->
-<!--  disabled: true  -->
