@@ -1,7 +1,11 @@
 class OrderItemsController < ApplicationController
+
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_params)
+    @product = Product.find(@order_item.product.id)
+    @product.stock -= 1
+    @product.save
     @order.save
     session[:order_id] = @order.id
   end
@@ -16,6 +20,9 @@ class OrderItemsController < ApplicationController
   def destroy
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
+    @product = Product.find(@order_item.product.id)
+    @product.stock += 1
+    @product.save
     @order_item.destroy
     @order_items = current_order.order_items
   end
