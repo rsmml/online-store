@@ -2,13 +2,13 @@
   <% if product.photos.attached? %>
   <!-- Card with CL Picture -->
     <div class="card d-flex justify-content-between flex-column" data-controller="stock">
-      <span style="display: none;" data-target="stock.id"><%= product.id %></span>
+      <span style="display: none;" data-stock-target="id"s><%= product.id %></span>
       <!-- Image -->
       <%= cl_image_tag product.photos.first.key, height: 200, width: 300, crop: :fill %>
 
       <!-- Stock -->
       <span>
-        <% if product.stock.nil? || product.stock == 0 %>
+        <% if product.stock.nil? || product.stock <= 0 %>
           <p class="out-stock">Out of stock</p>
         <% elsif product.stock <= 10 && product.stock > 0  %>
           <p class="last-stock" data-stock-target="count">Last <%= product.stock %> </p>
@@ -30,7 +30,7 @@
           <% if product.stock.nil? || product.stock == 0 %>
             <%= f.submit '+', :class => 'add-to-cart-disable', disabled: true %>
           <% else %>
-            <%= f.submit '+', :class => 'add-to-cart' %>
+            <%= f.submit '+', :class => 'add-to-cart', 'data-stock-target': "class" %>
           <% end %>
         <% end %>
       </div>
@@ -47,7 +47,7 @@
 
   <!-- Card with-out CL Picture -->
     <div class="card d-flex justify-content-between flex-column" data-controller="stock">
-      <span data-target="stock.id"><% product %></span>
+      <span data-stock-target="id"><% product.id %></span>
       <!-- Image -->
       <%= image_tag "featured-1.png", alt: "alttext" %>
 

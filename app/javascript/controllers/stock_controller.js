@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ 'count', 'id' ];
+  static targets = [ 'count', 'id', 'class' ];
 
   refresh() {
 
@@ -11,7 +11,15 @@ export default class extends Controller {
             let object = data.products.filter(obj => {
               return obj.id == this.idTarget.innerText
             });
-            this.countTarget.innerText = `Last ${object[0].stock - 1}`;
+            if (object[0].stock === 1) {
+              this.classTarget.classList.value = 'add-to-cart-disable';
+              this.classTarget.hidden = true;
+              this.classTarget.disabled = true;
+              this.countTarget.classList.value = 'out-stock';
+              this.countTarget.innerText = 'Out of Stock';
+            } else {
+              this.countTarget.innerText = `Last ${object[0].stock - 1}`;
+            }
           });
   }
 }
