@@ -16,7 +16,7 @@ export default class extends Controller {
               this.classTarget.hidden = true;
               this.classTarget.disabled = true;
               this.countTarget.classList.value = 'out-stock';
-              this.countTarget.innerText = 'Out of Stock';
+              this.countTarget.innerText = 'You got the last one 😉';
             } else {
               this.countTarget.innerText = `Last ${object[0].stock - 1}`;
             }
