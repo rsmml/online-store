@@ -17,7 +17,7 @@ import consumer from "./consumer";
 
 consumer.subscriptions.create({ channel: "StockChannel" }, {
   connected() {
-    console.log('Connecting...');
+    console.log('Hola Tine');
   },
 
   received(data) {
