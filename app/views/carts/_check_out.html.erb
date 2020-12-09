@@ -1,5 +1,8 @@
-<div class="check_out">
-  <h1>Total</h1>
-  <h3><%= current_order.subtotal %></h3>
+<div class="check_out d-flex justify-content-between flex-column">
+  <div>
+    <h1>Total</h1>
+    <hr>
+    <h4>€ <%= current_order.subtotal %></h4>
+  </div>
   <button id="check-out" type="button" class="btn btn-primary btn-lg btn-block">Check Out</button>
 </div>
