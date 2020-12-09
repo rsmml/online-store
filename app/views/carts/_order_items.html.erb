@@ -1,26 +1,22 @@
-<div class="order-items-title">
-  <h1>Shopping Cart</h1>
-  <p>Unit Price</p>
-</div>
-
 <div id="cart-item">
   <% @order_items.each do |item| %>
     <div class="row order-item-card">
-      <div class="order-item-picture col-12 col-lg-2">
+      <div class="order-item-picture col-6 col-lg-2">
         <%= cl_image_tag item.product.photos.first.key , alt: "product-picture" %>
       </div>
-      <div class="order-item-info col-12 col-lg-8">
+      <div class="order-item-info col-6 col-lg-8">
         <%= item.product.title %>
         <%= form_for item, remote: true do |f| %>
           <%= f.hidden_field :product_id, :value => item.product.id %>
-          <%= f.number_field :quantity, :value => item.quantity.to_i, max: item.product.stock %>
+          <%= f.number_field :quantity, :value => item.quantity.to_i, max: item.product.stock + 1 %>
           <%= f.submit "Update Cart", class: "btn btn-light btn-sm" %>
 
-          <%= link_to "Remove Items", order_item_path(item), class: "btn btn-light btn-sm", method: :delete, remote: true%>
+          <%= link_to "Remove Item", order_item_path(item), class: "btn btn-light btn-sm", method: :delete, remote: true%>
         <% end %>
       </div>
-      <div class="order-item-price col-12 col-lg-2">
-        <%= item.product.price %>
+      <div class="order-item-price col-12 col-lg-2 d-flex flex-column align-content-end justify-content-between">
+        <p style="font-size: 20px; font-weight: 600;">Eur <%= item.product.price %></p>
+        <p>Total: Eur <%= item.quantity * item.product.price %></p>
       </div>
     </div>
   <% end %>

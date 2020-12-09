@@ -1,12 +1,22 @@
-<div class="row items-subtotal-contaier">
+<div class="order-items-title">
+  <h1>Shopping Cart</h1>
+  <div>
+    <% if user_signed_in? %>
+      <p>Delivery address:</p>
+      <p> <%= current_user.user_name %> </p>
+    <% end %>
+  </div>
+  <hr>
+</div>
+<div class="row just">
   <!-- Items -->
-  <div class="order-items-products col-12 col-lg-9">
+  <div class="order-items-products col-12 col-lg-8">
     <%= render "order_items" %>
   </div>
 
   <!-- Subtotal - Checkout -->
-  <div class="order-items-subtotal col-12 col-lg-3">
-
+  <div class="order-items-subtotal col-12 col-lg-4">
+    <div style="height: 300px; background-color: rgba(0,0,0,0.4); border-radius: 8px; margin-right: 64px;"></div>
   </div>
 
 </div>
