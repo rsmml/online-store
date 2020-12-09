@@ -9,9 +9,9 @@
       <div class="order-item-info col-12 col-lg-8 d-flex flex-column align-content-between">
         <%= item.product.title %>
         <% if item.product.stock > 10 %>
-          <p>In Stock</p>
+          <p style="color: #7acf33; text-shadow: 0 0 1px #8BE83E;" class="blockquote-footer">In Stock</p>
         <% elsif  %>
-          <p>Last Items</p>
+          <p style="color: #ffc200; text-shadow: 0 0 1px #ffc200" class="blockquote-footer">Last Items</p>
         <% end %>
         <%= form_for item, remote: true do |f| %>
           <%= f.hidden_field :product_id, :value => item.product.id %>
