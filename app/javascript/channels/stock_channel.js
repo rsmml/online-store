@@ -15,12 +15,17 @@ import consumer from "./consumer";
 
 // export { initStockUpdate };
 
-consumer.subscriptions.create({ channel: "StockChannel" }, {
-  connected() {
-    console.log('Hola Tine');
-  },
+const element = document.getElementById('stock-id');
+if (element) {
+  const room_id = element.getAttribute('data-stock-id');
 
-  received(data) {
-    console.log(data); // called when data is broadcast in the cable
-  },
-});
+  consumer.subscriptions.create({ channel: "StockChannel", stock_id: room_id }, {
+    connected() {
+      console.log('Connected to Stock: ' + room_id);
+    },
+
+    received(data) {
+      console.log(data); // called when data is broadcast in the cable
+    },
+  });
+}

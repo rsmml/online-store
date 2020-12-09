@@ -8,11 +8,10 @@ class OrderItemsController < ApplicationController
     @product.save
     @order.save
     StockChannel.broadcast_to(
-      @order_item ,
+      @stock,
       # render_to_string(partial: "stock", locals: { stock: @product.stock })
       "Hello There!"
     )
-
     session[:order_id] = @order.id
   end
 
