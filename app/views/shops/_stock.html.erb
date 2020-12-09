@@ -11,7 +11,7 @@
         <% if product.stock.nil? || product.stock <= 0 %>
           <p class="out-stock">Out of stock</p>
         <% elsif product.stock <= 10 && product.stock > 0  %>
-          <p id="stock" data-stock-id="" class="last-stock" data-stock-target="count">Last <%= product.stock %> </p>
+          <p id="stock" data-stock-id="" class="last-stock js" data-stock-target="count">Last <%= product.stock %> </p>
         <% end %>
       </span>
 
