@@ -15,12 +15,12 @@ import consumer from "./consumer";
 
 // export { initStockUpdate };
 
-consumer.subscriptions.create({ channel: "StockChannel" }, {
-  connected() {
-    console.log('Hola Tine');
-  },
+// consumer.subscriptions.create({ channel: "StockChannel" }, {
+//   connected() {
+//     console.log('Hola Tine');
+//   },
 
-  received(data) {
-    console.log(data); // called when data is broadcast in the cable
-  },
-});
+//   received(data) {
+//     console.log(data); // called when data is broadcast in the cable
+//   },
+// });
