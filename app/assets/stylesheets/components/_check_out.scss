@@ -1,0 +1,37 @@
+.check_out{
+  height: 400px;
+  background-color: #41434c;
+  border-radius: 6px;
+  margin-right: 64px;
+  color: white;
+  padding: 30px 40px;
+  h1 {
+    font-size: 24px;
+  }
+}
+
+#check-out{
+  border-radius: 4px;
+  background-color: #2878f6;
+  &:hover{
+    text-shadow: 0 0 2px rgba(255,255,255,0.3);
+    background-color: #1664de;
+  }
+}
+
+.order-items-subtotal{
+  p {
+    color: #6c757e;
+    &:hover{
+      color: #0059c8 ;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.check-out-sticky{
+  position: sticky;
+  top: 16px;
+}

@@ -1,16 +1,26 @@
-<h1>Cart:</h1>
-<% @order_items.each do |item| %>
-  <%= item.product.title %>
-  <%= item.product.price %>
+<div class="order-items-title">
+  <h1>Shopping Cart</h1>
+  <div>
+    <% if user_signed_in? %>
+      <div class="d-flex justify-content-end align-items-baseline">
+        <i class="fas fa-map-marker-alt"></i>
+        <div style="margin-left: 12px;">
+          <p>Delivery address:</p>
+          <p> <%= current_user.user_name %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+</div>
+<div class="row just">
+  <!-- Items -->
+  <div class="order-items-products col-12 col-lg-8">
+    <%= render "order_items" %>
+  </div>
 
-  <%= form_for item, remote: true do |f| %>
-    <%= f.hidden_field :product_id, :value => item.product.id %>
-    <%= f.number_field :quantity, :value => item.quantity.to_i %>
-    <%= f.submit "Update Cart" %>
-
-    <%= link_to "Remove Items", order_item_path(item), method: :delete, remote: true%>
-  <% end %>
-  <p>Subtotal: <%= item.total %> </p>
-<% end %>
-
-<p>Total: <%= current_order.subtotal%> </p>
+  <!-- Subtotal - Checkout -->
+  <div class="sticky-top order-items-subtotal col-12 col-lg-4">
+    <%= render "check_out" %>
+  </div>
+</div>

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :products
   resources :shops, only: %i[index show]
-  resource :carts, only: :show
+  resource :carts, only: :show do
+    collection do
+      delete :destroy_all
+    end
+  end
 
   resources :order_items do
     resources :products
