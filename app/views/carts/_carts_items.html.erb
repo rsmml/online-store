@@ -1,32 +1,12 @@
 <div class="row items-subtotal-contaier">
+  <!-- Items -->
   <div class="order-items-products col-12 col-lg-9">
-  <h1>Shopping Cart</h1>
-  <p>
-    <%#= link_to 'Empty Cart', [:destroy_all, :order_item] , :confirm => ‘Are you sure?’%>
-  </p>
+    <%= render "order_items" %>
   </div>
+
+  <!-- Subtotal - Checkout -->
   <div class="order-items-subtotal col-12 col-lg-3">
 
   </div>
+
 </div>
-
-
-
-
-
-
-<% @order_items.each do |item| %>
-  <%= item.product.title %>
-  <%= item.product.price %>
-
-  <%= form_for item, remote: true do |f| %>
-    <%= f.hidden_field :product_id, :value => item.product.id %>
-    <%= f.number_field :quantity, :value => item.quantity.to_i %>
-    <%= f.submit "Update Cart" %>
-
-    <%= link_to "Remove Items", order_item_path(item), method: :delete, remote: true%>
-  <% end %>
-  <p>Subtotal: <%= item.total %> </p>
-<% end %>
-
-<p>Total: <%= current_order.subtotal%> </p>
