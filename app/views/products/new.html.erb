@@ -13,11 +13,20 @@
             <%= f.input :title %>
             <%= f.input :price %>
             <%= f.input :stock %>
-            <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+            <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-max-file-size="5" data-dropzone-max-files="4">
+              <%= f.input :photos, as: :file, input_html: { multiple: true, data: { target: "dropzone.input" }, direct_upload: true }, label: false %>
+              <div class="dropzone-msg dz-message needsclick text-gray-600">
+                <span class="d-flex justify-content-center">
+                  <h3 class="dropzone-msg-ttile mr-1">Drop your image here, or</h3>
+                  <h3 style="color: #047bff"> browse</h3>
+                </span>
+                <span class="dropzone-msg-desc text-sm"> 5 MB file size maximum. Allowed file type .png .jpg</span>
+              </div>
+            </div>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit %>
+            <%= f.button :submit, class: "btn btn-primary" %>
           </div>
         <% end %>
 
