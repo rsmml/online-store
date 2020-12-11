@@ -1,5 +1,9 @@
 <div class="order-items-title">
-  <h1>Shopping Cart</h1>
+  <% if user_signed_in? %>
+    <h1 style="margin-bottom: 0;">Shopping Cart</h1>
+  <% else %>
+    <h1>Shopping Cart</h1>
+  <% end %>
   <div>
     <% if user_signed_in? %>
       <div class="d-flex justify-content-end align-items-baseline">

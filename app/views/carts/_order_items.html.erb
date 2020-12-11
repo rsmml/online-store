@@ -1,5 +1,5 @@
 <div id="cart-item">
-  <% @order_items.each do |item| %>
+  <% @order_items.order(:created_at).each do |item| %>
     <div class="row order-item-card">
       <!-- Picture -->
       <div class="order-item-picture col-12 col-lg-2 ">
@@ -23,8 +23,8 @@
       </div>
       <!-- Prices -->
       <div class="order-item-price col-12 col-lg-2 d-flex flex-column align-content-end justify-content-between">
-        <p style="font-size: 20px; font-weight: 600;">Eur <%= item.product.price %></p>
-        <p style="margin-bottom: 0;">Total: Eur <%= item.quantity * item.product.price %></p>
+        <p style="font-size: 20px; font-weight: 600;">€ <%= item.quantity * item.product.price %></p>
+        <p style="margin-bottom: 12px;">Item: € <%= item.product.price %> </p>
       </div>
     </div>
   <% end %>
