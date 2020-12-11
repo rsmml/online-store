@@ -10,8 +10,8 @@
 
           <div class="form-inputs">
             <%= f.input :title, label: false, placeholder: "Product Name", class: "form-imput-underlined" %>
-            <%= f.input :price, label: false , placeholder: "40", class: "form-imput-underlined" %>
-            <%= f.input :stock, label: false , placeholder: "1000", class: "form-imput-underlined" %>
+            <%= f.input :price, label: false , placeholder: "Price", class: "form-imput-underlined" %>
+            <%= f.input :stock, label: false , placeholder: "Stock", class: "form-imput-underlined" %>
             <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-max-file-size="5" data-dropzone-max-files="4">
               <%= f.input :photos, as: :file, input_html: { multiple: true, data: { target: "dropzone.input" }, direct_upload: true }, label: false %>
               <div class="dropzone-msg dz-message needsclick text-gray-600">
