@@ -1,0 +1,47 @@
+@import "dropzone/dist/min/dropzone.min.css";
+@import "dropzone/dist/min/basic.min.css";
+
+// .input {
+//   @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
+// }
+
+// .input:focus {
+//   @apply outline-none bg-white border-gray-400;
+// }
+
+// .label {
+//   @apply block text-gray-700 text-sm font-bold mb-2;
+// }
+
+// .select {
+//   @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-100 border border-gray-300 text-gray-700
+//    rounded leading-tight;
+//   -webkit-appearance: none;
+// }
+
+// .select:focus {
+//   @apply outline-none bg-white border-gray-400;
+// }
+
+.dropzone {
+  border: 2px dashed rgba(14,91,155,0.4);
+  border-radius: 12px;
+  transition: 0.2s;
+
+  h3 {
+    font-size: 20px;
+    color: #394e70;
+  }
+  span{
+    font-size: 12px;
+  }
+
+  &.dz-drag-hover {
+    border: 2px dashed #0e5bb9;
+    background-color: #e6f1ff;
+
+    .dz-message {
+      opacity: 0.5;
+    }
+  }
+}

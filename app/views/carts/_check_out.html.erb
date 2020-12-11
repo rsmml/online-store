@@ -5,7 +5,10 @@
       <hr>
       <h4>€ <%= current_order.subtotal %></h4>
     </div>
-    <button id="check-out" type="button" class="btn btn-primary btn-lg btn-block">Check Out</button>
+    <div>
+      <p>Proceed to payment & delivery options</p>
+      <button id="check-out" type="button" class="btn btn-primary btn-lg btn-block">Check Out</button>
+    </div>
   </div>
-  <p class="d-flex align-items-center"><<%= link_to 'Continue Shopping', shops_path, :class => "blockquote-footer" %></p>
+  <p class="d-flex align-items-center link-with-arrow"><<%= link_to 'Continue Shopping', shops_path, :class => "blockquote-footer" %></p>
 </div>
