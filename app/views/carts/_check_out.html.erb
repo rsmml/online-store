@@ -6,13 +6,6 @@
       <h4>€ <%= current_order.subtotal %></h4>
     </div>
     <div>
-      <ul>
-        <% @order_items.order(:created_at).each do |item| %>
-          <li><%= item.product.title %> <%= item.product.price %></li>
-        <% end %>
-      </ul>
-    </div>
-    <div>
       <p>Proceed to payment & delivery options</p>
       <button id="check-out" type="button" class="btn btn-primary btn-lg btn-block">Check Out</button>
     </div>
