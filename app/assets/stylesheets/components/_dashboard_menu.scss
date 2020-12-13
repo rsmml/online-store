@@ -1,0 +1,26 @@
+.dashboard-menu{
+  width: 200px;
+  background-color: white;
+  height: 100vh;
+  .dashboard-avatar {
+    img.avatar-default{
+      transition: 0.3s,
+    }
+    img.avatar-default:hover{
+      opacity: 0.5;
+      filter: blur(1px);
+    }
+  }
+  p.user-name {
+    font-weight: bolder;
+    margin: 0;
+    padding: 6px 0;
+  }
+  p.user-role {
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid #5cc9f5;
+    border-radius: 4px;
+    color: #308fb5;
+  }
+}
