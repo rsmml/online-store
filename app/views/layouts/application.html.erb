@@ -19,12 +19,14 @@
 
   <body>
     <!-- Nav Bar -->
-    <%= render 'shared/navbar2' %>
+    <% unless current_page?(dashboards_path) %>
+      <%= render :partial => 'shared/navbar2' %>
+    <% end %>
 
     <!-- Body Content -->
     <%= yield %>
 
     <!-- Footer -->
-    <%= render 'shared/footer' %>
+    <%#= render 'shared/footer' %>
   </body>
 </html>
