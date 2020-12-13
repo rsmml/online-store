@@ -15,11 +15,7 @@ class ProductCategoriesController < ApplicationController
   end
 
   def create
-    find_product
-    find_category
     @product_category = ProductCategory.new(product_category_params)
-    @product_category.product_id = @product.id
-    @product_category.category_id = @category.id
 
     if @product_category.save
       redirect_to products_path
@@ -47,14 +43,6 @@ class ProductCategoriesController < ApplicationController
 
   def find_product_category
     @product_category = ProductCategory.find(params[:id])
-  end
-
-  def find_product
-    @product = Product.find(params[:id])
-  end
-
-  def find_category
-    @category = Category.find(params[:id])
   end
 
   def product_category_params
