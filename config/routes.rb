@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   resources :products
   resources :shops, only: %i[index show]
@@ -8,6 +7,9 @@ Rails.application.routes.draw do
       delete :destroy_all
     end
   end
+
+  resources :product_categories
+  resources :categories
 
   resources :order_items do
     resources :products

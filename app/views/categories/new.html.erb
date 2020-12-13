@@ -1,0 +1,14 @@
+<h2>Add a new Category</h2>
+<%= simple_form_for(@category) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: false, placeholder: "Category Name", class: "form-imput-underlined" %>
+    <%= f.input :description, as: :text, label: false , placeholder: "Category Description", class: "form-imput-underlined" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, '+ Add Category', class: "btn btn-primary btn-lg btn-block mt-3"%>
+  </div>
+<% end %>
