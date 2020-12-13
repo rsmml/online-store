@@ -24,9 +24,9 @@
     </ul>
   </div>
   <!-- Log Out -->
-  <div class="dashboard-link menu-log-out">
-    <%= link_to destroy_user_session_path, :method => :delete, class: 'log-out' do %>
-      <i class="fas fa-sign-out-alt"></i>Log Out
+  <div class="dashboard-link menu-log-out mb-3" style="font-size: 14px;">
+    <%= link_to destroy_user_session_path, :method => :delete, class: 'log-out',:style => "padding: 14px 24px;color: #41434c;" do %>
+      <i class="fas fa-sign-out-alt" style="margin-right: 12px; padding: 8px;"></i>Log Out
     <% end %>
   </div>
 </div>

@@ -35,7 +35,6 @@
         font-size: 14px;
         padding: 14px 24px;
         color: #41434c;
-        transition: 0.3s;
         &:hover{
           color: #2a2b30;
           border-right: 2px solid #5a7dfb
@@ -48,8 +47,9 @@
         }
       }
     }
-    a.log-out {
-      color: red;
-    }
   }
+}
+a.log-out:hover{
+  text-decoration: none !important;
+  color: #23212b;
 }
