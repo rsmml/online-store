@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :product_categories
   resources :categories
+  resources :dashboards
 
   resources :order_items do
     resources :products
