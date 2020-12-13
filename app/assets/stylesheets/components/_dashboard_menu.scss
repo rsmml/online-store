@@ -46,6 +46,10 @@
           color: #ffffff;
         }
       }
+      li.active{
+        background-color: rgba(190,197,202,0.2);
+        border-right: 2px solid #5a7dfb
+      }
     }
   }
 }
