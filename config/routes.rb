@@ -1,19 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'categories/index'
-  get 'categories/show'
-  get 'categories/new'
-  get 'categories/create'
-  get 'categories/edit'
-  get 'categories/update'
-  get 'categories/destroy'
-  get 'product_categories/index'
-  get 'product_categories/show'
-  get 'product_categories/new'
-  get 'product_categories/create'
-  get 'product_categories/edit'
-  get 'product_categories/update'
-  get 'product_categories/destroy'
   devise_for :users
   resources :products
   resources :shops, only: %i[index show]
@@ -22,6 +7,9 @@ Rails.application.routes.draw do
       delete :destroy_all
     end
   end
+
+  resources :product_categories
+  resources :categories
 
   resources :order_items do
     resources :products
