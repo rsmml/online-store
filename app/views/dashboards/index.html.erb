@@ -1,4 +1,5 @@
-<div class="dashboard-menu">
+<div class="dashboard-menu d-flex flex-column">
+  <!-- Avatar -->
   <div class="dashboard-avatar d-flex justify-content-center align-items-center flex-column py-3">
     <% if @user.avatar.attached? %>
       <%= cl_image_tag @user.avatar.key , alt: "avatar" %>
@@ -8,20 +9,24 @@
       <% end %>
     <% end %>
     <p class="user-name"><%= @user.user_name %></p>
-    <p class="user-role">Role</p>
+    <p class="user-role"><%= @user.role %></p>
   </div>
-  <div class="dasboard-link menu-options">
+  <!-- Links -->
+  <div class="dasboard-link menu-options flex-grow-1">
     <ul>
-      <li>Dashboard</li>
-      <li>Products</li>
-      <li>Categories</li>
-      <li>Orders</li>
-      <li>Clients</li>
-      <li>Messages</li>
-      <li>Profile</li>
+      <li><i style="background-color: #7d5aff;" class="fas fa-columns"></i>Dashboard</li>
+      <li><i style="background-color: #ff818a;" class="fas fa-tag"></i>Products</li>
+      <li><i style="background-color: #ffc644;" class="fas fa-folder"></i>Categories</li>
+      <li><i style="background-color: #ff9151;" class="fas fa-shopping-basket"></i>Orders</li>
+      <li><i style="background-color: #679b9b;" class="fas fa-shopping-basket"></i>Clients</li>
+      <li><i style="background-color: #edc988;" class="fas fa-shopping-basket"></i>Messages</li>
+      <li><i style="background-color: #51acd3;" class="fas fa-address-card"></i>Profile</li>
     </ul>
   </div>
+  <!-- Log Out -->
   <div class="dashboard-link menu-log-out">
-    <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: 'nav-link'  %>
+    <%= link_to destroy_user_session_path, :method => :delete, class: 'log-out' do %>
+      <i class="fas fa-sign-out-alt"></i>Log Out
+    <% end %>
   </div>
 </div>

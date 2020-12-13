@@ -4,7 +4,8 @@
   height: 100vh;
   .dashboard-avatar {
     img.avatar-default{
-      transition: 0.3s,
+      transition: 0.3s;
+      border-radius: 50%
     }
     img.avatar-default:hover{
       opacity: 0.5;
@@ -12,7 +13,8 @@
     }
   }
   p.user-name {
-    font-weight: bolder;
+    font-weight: 700;
+    font-size: 14px;
     margin: 0;
     padding: 6px 0;
   }
@@ -22,5 +24,32 @@
     border: 1px solid #5cc9f5;
     border-radius: 4px;
     color: #308fb5;
+  }
+  .dasboard-link{
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      li {
+        font-size: 14px;
+        padding: 14px 24px;
+        color: #41434c;
+        transition: 0.3s;
+        &:hover{
+          color: #2a2b30;
+          border-right: 2px solid #5a7dfb
+        }
+        i{
+          margin-right: 12px;
+          padding: 8px;
+          border-radius: 4px;
+          color: #ffffff;
+        }
+      }
+    }
+    a.log-out {
+      color: red;
+    }
   }
 }
