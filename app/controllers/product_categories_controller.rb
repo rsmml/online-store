@@ -2,7 +2,7 @@ class ProductCategoriesController < ApplicationController
   before_action :find_product_category, only: %i[show edit update destroy]
 
   def index
-    @product_categories = ProductCategory.all
+    @product_categories = policy_scope(ProductCategory)
   end
 
   def show
@@ -12,10 +12,12 @@ class ProductCategoriesController < ApplicationController
     @product_category = ProductCategory.new
     @products = Product.all
     @categories = Category.all
+    authorize @product_category
   end
 
   def create
     @product_category = ProductCategory.new(product_category_params)
+    authorize @product_category
 
     if @product_category.save
       redirect_to products_path
@@ -43,6 +45,7 @@ class ProductCategoriesController < ApplicationController
 
   def find_product_category
     @product_category = ProductCategory.find(params[:id])
+    authorize @product_category
   end
 
   def product_category_params
