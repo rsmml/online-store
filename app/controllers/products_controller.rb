@@ -3,11 +3,11 @@ class ProductsController < ApplicationController
 
 
   def index
-    @products = Product.all
-    respond_to do |format|
-      format.html
-      format.json { render json: { products: @products } }
-    end
+    @products = policy_scope(Product)
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: { products: @products } }
+    # end
   end
 
   def show
@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def edit
@@ -23,9 +24,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
+    authorize @product
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to products_path
     else
       render :new
     end
@@ -45,6 +46,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+      authorize @product
     end
 
     # Only allow a list of trusted parameters through.
