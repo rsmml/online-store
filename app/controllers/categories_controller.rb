@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :find_category, only: %i[show edit update destroy]
+
   def index
-    @categories = Category.all
+    @categories = policy_scope(Category)
   end
 
   def show
@@ -9,10 +10,12 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    authorize @category
   end
 
   def create
     @category = Category.new(category_params)
+    authorize @category
 
     if @category.save
       redirect_to categories_path
@@ -38,6 +41,7 @@ class CategoriesController < ApplicationController
 
   def find_category
     @category = Category.find(params[:id])
+    authorize @category
   end
 
   def category_params
