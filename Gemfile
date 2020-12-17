@@ -24,6 +24,9 @@ gem 'redis'
 
 gem 'jquery-rails', '~> 4.4'
 
+# Mailing
+gem "letter_opener", group: :development
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
