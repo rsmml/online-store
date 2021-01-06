@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :employees
+  devise_for :clients
   devise_for :users
   resources :products
   resources :shops, only: %i[index show]
