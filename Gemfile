@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem "rack-cors", :require => 'rack/cors'
 gem 'jquery-rails', '~> 4.4'
 
 # Use Active Storage variant

@@ -1,5 +1,6 @@
 class Api::V1::ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!
+  before_action :set_product, only: %i[show edit update destroy]
 
   def index
     products = policy_scope(Product)
@@ -7,7 +8,7 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def show
-    render json: { product: product }
+    render json: { product: @product }
   end
 
   def edit
@@ -39,8 +40,8 @@ class Api::V1::ProductsController < ApplicationController
 
   private
     def set_product
-      product = Product.find(params[:id])
-      authorize product
+      @product = Product.find(params[:id])
+      skip_authorization
     end
 
     def product_params
