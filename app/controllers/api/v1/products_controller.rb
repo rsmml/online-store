@@ -4,11 +4,19 @@ class Api::V1::ProductsController < ApplicationController
 
   def index
     products = policy_scope(Product)
-    render json: { products: products }
+    products_with_pictures = []
+    products.each do |product|
+      products_with_pictures << {'product' => product, 'photos' => product.photos.map{|p| p.key}}
+    end
+    render json: { products: products_with_pictures }
   end
 
   def show
-    render json: { product: @product }
+    images = []
+    @product.photos.each do |photo|
+      images << photo.key
+    end
+    render json: { product: @product, images: images }
   end
 
   def edit
