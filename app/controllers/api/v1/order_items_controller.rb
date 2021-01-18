@@ -1,5 +1,6 @@
 class Api::V1::OrderItemsController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def create
     @order = current_order
@@ -9,7 +10,7 @@ class Api::V1::OrderItemsController < ApplicationController
     @product.save
     @order.save
     session[:order_id] = @order.id
-    authorize @order_item
+    skip_authorization
   end
 
   def update
